@@ -65,7 +65,7 @@ struct PapelPicado: View {
 /// Franja de flecos de papel de china, como la piel de una piñata.
 struct FlecosPinata: View {
     var colores: [Color] = Color.fiesta
-    var filas = 3
+    let filas = 3
 
     var body: some View {
         Canvas { context, size in
@@ -162,14 +162,13 @@ struct TituloFiesta: View {
 /// Contador de estrellas: estrella amarilla en cápsula morada.
 struct InsigniaEstrellas: View {
     let cantidad: Int
-    var etiqueta: String? = nil
 
     var body: some View {
         HStack(spacing: 8) {
             Image(systemName: "star.fill")
                 .foregroundStyle(Color.amarillo)
                 .shadow(color: Color.amarilloOscuro, radius: 0, x: 0, y: 2)
-            Text(etiqueta ?? "\(cantidad)")
+            Text("\(cantidad)")
                 .foregroundStyle(.white)
                 .monospacedDigit()
         }

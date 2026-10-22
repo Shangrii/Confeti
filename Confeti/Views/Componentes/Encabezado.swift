@@ -3,7 +3,6 @@ import SwiftUI
 /// Letrero de madera colgado con cuerdas, como los carteles del jardín.
 struct LetreroMadera: View {
     let texto: String
-    var colgado = true
 
     var body: some View {
         Text(texto)
@@ -38,15 +37,13 @@ struct LetreroMadera: View {
                 }
             }
             .overlay(alignment: .top) {
-                if colgado {
-                    HStack {
-                        cuerda
-                        Spacer()
-                        cuerda
-                    }
-                    .padding(.horizontal, 26)
-                    .offset(y: -34)
+                HStack {
+                    cuerda
+                    Spacer()
+                    cuerda
                 }
+                .padding(.horizontal, 26)
+                .offset(y: -34)
             }
             .accessibilityAddTraits(.isHeader)
     }
@@ -65,29 +62,21 @@ struct EncabezadoPantalla<Derecha: View>: View {
     @Environment(\.dismiss) private var dismiss
 
     private let titulo: String
-    private let atras: Bool
     private let derecha: Derecha
 
-    init(_ titulo: String, atras: Bool = true, @ViewBuilder derecha: () -> Derecha) {
+    init(_ titulo: String, @ViewBuilder derecha: () -> Derecha) {
         self.titulo = titulo
-        self.atras = atras
         self.derecha = derecha()
     }
 
     var body: some View {
         HStack(alignment: .center, spacing: 16) {
-            Group {
-                if atras {
-                    Button(action: { dismiss() }) {
-                        Image(systemName: "chevron.backward")
-                            .font(.title.weight(.black))
-                    }
-                    .buttonStyle(BotonRedondo())
-                    .accessibilityLabel("Regresar")
-                } else {
-                    Color.clear.frame(width: 64, height: 64)
-                }
+            Button(action: { dismiss() }) {
+                Image(systemName: "chevron.backward")
+                    .font(.title.weight(.black))
             }
+            .buttonStyle(BotonRedondo())
+            .accessibilityLabel("Regresar")
             .frame(minWidth: 140, alignment: .leading)
 
             LetreroMadera(texto: titulo)
@@ -99,12 +88,6 @@ struct EncabezadoPantalla<Derecha: View>: View {
         .padding(.horizontal, 24)
         .padding(.top, FondoFiesta.altoBanderines - 22)
         .padding(.bottom, 8)
-    }
-}
-
-extension EncabezadoPantalla where Derecha == EmptyView {
-    init(_ titulo: String, atras: Bool = true) {
-        self.init(titulo, atras: atras) { EmptyView() }
     }
 }
 

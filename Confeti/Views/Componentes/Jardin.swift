@@ -3,8 +3,6 @@ import SwiftUI
 /// El jardín de las piñatas: cielo, sol sonriente, nubes que pasean, colinas con árboles,
 /// cerca, flores, mariposas y papel picado arriba. Fondo de todas las pantallas.
 struct FondoFiesta: View {
-    var banderines = true
-
     static let altoBanderines: CGFloat = 64
 
     var body: some View {
@@ -40,10 +38,8 @@ struct FondoFiesta: View {
                 Mariposa(color: Color(hex: "B983FF"), recorrido: CGSize(width: 70, height: -60), duracion: 5)
                     .position(x: w * 0.48, y: h * 0.78)
 
-                if banderines {
-                    PapelPicado(cantidad: max(Int(w / 105), 8))
-                        .frame(width: w, height: Self.altoBanderines)
-                }
+                PapelPicado(cantidad: max(Int(w / 105), 8))
+                    .frame(width: w, height: Self.altoBanderines)
             }
             .frame(width: w, height: h)
         }

@@ -17,7 +17,6 @@ extension Color {
     static let grisDesactivado = Color(hex: "6E6E73")
 
     static let cieloAlto = Color(hex: "7FD3F7")
-    static let cieloBajo = Color(hex: "D9F4FF")
     static let pasto = Color(hex: "8BD16A")
     static let pastoOscuro = Color(hex: "5DAE45")
 
