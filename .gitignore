@@ -1,0 +1,12 @@
+.DS_Store
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+~$*
+
+# Material de la escuela, sólo local
+Entregables/
+Personajes/
+PENDIENTES.md
+CLAUDE.md
